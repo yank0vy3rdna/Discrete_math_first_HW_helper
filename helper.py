@@ -1,19 +1,26 @@
+'''
+    author: yank0vy3rdna.ru
+'''
+
 from tabulate import tabulate
 import copy
 
 data = {}
-inp = '021153411005200420000003100250005052142000444022525003102040300030005005400410052403100400501000105425210100000000401000005240000000532205300000'
+# inp = '021153411005200420000003100250005052142000444022525003102040300030005005400410052403100400501000105425210100000000401000005240000000532205300000'
 
 
 # inp = '000011044005000003051045000000050230000052000542100500010000130200102140000001012313455010101404410002210044002501340000043404104005550200344030'
-# r = ''
-# print('Введи свою таблицу графа построчно, заменяя все пропуски нулями(по 12 символов в строке): ')
-# for i in range(12):
-#     while True:
-#         inpstr = input('E' + str(i+1)+': ')
-#         if len(inpstr) == 12:
-#             r += inpstr
-#             break
+r = ''
+print(
+    'Введи свою таблицу графа построчно, заменяя все пропуски нулями(по 12 символов в строке): ')
+for i in range(12):
+    while True:
+        inpstr = input('E' + str(i + 1) + ': ')
+        if len(inpstr) == 12:
+            r += inpstr
+            break
+
+
 # print(r)
 def countNums(d: dict):
     counter = 0
@@ -79,8 +86,7 @@ def rec(dictionary, iteration):
     for i in sorted_keys[1:]:
         flag = True
         for j in answ[iteration].copy():
-            if dictionary[j][i] != 0 or \
-                    (last_count > counts[i] and len(answ[iteration]) > 1):
+            if dictionary[j][i] != 0:
                 flag = False
                 break
         if flag:
@@ -108,5 +114,5 @@ print()
 print('Answer: ')
 print()
 for i in range(c):
-    print('phi', str(i + 1), ' = ', sorted(answ[i],key=lambda x: int(x[1:])))
+    print('phi', str(i + 1), ' = ', sorted(answ[i], key=lambda x: int(x[1:])))
     print()
